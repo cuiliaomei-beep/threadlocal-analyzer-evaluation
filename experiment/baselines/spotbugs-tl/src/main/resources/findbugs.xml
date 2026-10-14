@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindbugsPlugin
+    pluginid="edu.anon.spotbugs.threadlocal"
+    provider="ThreadLocal Misuse Study"
+    website="https://example.org/threadlocal">
+
+    <Detector
+        class="edu.anon.spotbugs.threadlocal.TL_SCO_MissingRemoveDetector"
+        reports="TL_SCO_MISSING_REMOVE"
+        speed="fast" />
+
+    <Detector
+        class="edu.anon.spotbugs.threadlocal.TL_CLP_StaticThreadLocalDetector"
+        reports="TL_CLP_STATIC_THREADLOCAL"
+        speed="fast" />
+
+    <Detector
+        class="edu.anon.spotbugs.threadlocal.TL_CPM_UnbalancedContextDetector"
+        reports="TL_CPM_UNBALANCED_CONTEXT"
+        speed="moderate" />
+
+    <Detector
+        class="edu.anon.spotbugs.threadlocal.TL_HVR_HeavyValueRetentionDetector"
+        reports="TL_HVR_HEAVY_VALUE_RETENTION"
+        speed="fast" />
+
+    <BugPattern type="TL_SCO_MISSING_REMOVE"
+                abbrev="TL"
+                category="CORRECTNESS" />
+
+    <BugPattern type="TL_CLP_STATIC_THREADLOCAL"
+                abbrev="TL"
+                category="PERFORMANCE" />
+
+    <BugPattern type="TL_CPM_UNBALANCED_CONTEXT"
+                abbrev="TL"
+                category="CORRECTNESS" />
+
+    <BugPattern type="TL_HVR_HEAVY_VALUE_RETENTION"
+                abbrev="TL"
+                category="PERFORMANCE" />
+
+</FindbugsPlugin>

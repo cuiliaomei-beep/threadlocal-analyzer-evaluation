@@ -1,0 +1,214 @@
+[
+  {
+    "tool": "Sonar",
+    "release": "druid-processing-0.14.0-incubating",
+    "warnings": [
+      {
+        "raw_ordinal": 511,
+        "native_id": "19126c5d-6803-4645-ae12-142c50ac6067",
+        "raw_rule": "java:S5164",
+        "primary_class": "org.apache.druid.query.groupby.epinephelinae.RowBasedGrouperHelper",
+        "message": "Use \"remove()\" instead of \"set(null)\".",
+        "spans": [
+          {
+            "file": "src/org/apache/druid/query/groupby/epinephelinae/RowBasedGrouperHelper.java",
+            "start": 271,
+            "end": 271
+          }
+        ]
+      },
+      {
+        "raw_ordinal": 1119,
+        "native_id": "7ac4a338-e5b4-4505-b863-da4759b3f0c5",
+        "raw_rule": "java:S5164",
+        "primary_class": "org.apache.druid.segment.incremental.OffheapIncrementalIndex",
+        "message": "Use \"remove()\" instead of \"set(null)\".",
+        "spans": [
+          {
+            "file": "src/org/apache/druid/segment/incremental/OffheapIncrementalIndex.java",
+            "start": 175,
+            "end": 175
+          }
+        ]
+      },
+      {
+        "raw_ordinal": 1120,
+        "native_id": "d30dcdce-e48d-4067-b663-d5f3d3245f99",
+        "raw_rule": "java:S5164",
+        "primary_class": "org.apache.druid.segment.incremental.OffheapIncrementalIndex",
+        "message": "Use \"remove()\" instead of \"set(null)\".",
+        "spans": [
+          {
+            "file": "src/org/apache/druid/segment/incremental/OffheapIncrementalIndex.java",
+            "start": 242,
+            "end": 242
+          }
+        ]
+      },
+      {
+        "raw_ordinal": 1125,
+        "native_id": "a95c2146-cc77-4cd3-9103-4f66ca7e03e1",
+        "raw_rule": "java:S5164",
+        "primary_class": "org.apache.druid.segment.incremental.OnheapIncrementalIndex",
+        "message": "Use \"remove()\" instead of \"set(null)\".",
+        "spans": [
+          {
+            "file": "src/org/apache/druid/segment/incremental/OnheapIncrementalIndex.java",
+            "start": 235,
+            "end": 235
+          }
+        ]
+      },
+      {
+        "raw_ordinal": 1126,
+        "native_id": "e7924c3e-fada-43b7-b112-52431b8a2d9e",
+        "raw_rule": "java:S5164",
+        "primary_class": "org.apache.druid.segment.incremental.OnheapIncrementalIndex",
+        "message": "Use \"remove()\" instead of \"set(null)\".",
+        "spans": [
+          {
+            "file": "src/org/apache/druid/segment/incremental/OnheapIncrementalIndex.java",
+            "start": 262,
+            "end": 262
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tool": "Sonar",
+    "release": "druid-processing-0.14.1-incubating",
+    "warnings": [
+      {
+        "raw_ordinal": 511,
+        "native_id": "732acb45-9d23-44c2-b2ba-03175f880491",
+        "raw_rule": "java:S5164",
+        "primary_class": "org.apache.druid.query.groupby.epinephelinae.RowBasedGrouperHelper",
+        "message": "Use \"remove()\" instead of \"set(null)\".",
+        "spans": [
+          {
+            "file": "src/org/apache/druid/query/groupby/epinephelinae/RowBasedGrouperHelper.java",
+            "start": 271,
+            "end": 271
+          }
+        ]
+      },
+      {
+        "raw_ordinal": 1120,
+        "native_id": "69f01684-c0b0-4006-8ebb-ac3c6c0a7e87",
+        "raw_rule": "java:S5164",
+        "primary_class": "org.apache.druid.segment.incremental.OffheapIncrementalIndex",
+        "message": "Use \"remove()\" instead of \"set(null)\".",
+        "spans": [
+          {
+            "file": "src/org/apache/druid/segment/incremental/OffheapIncrementalIndex.java",
+            "start": 175,
+            "end": 175
+          }
+        ]
+      },
+      {
+        "raw_ordinal": 1121,
+        "native_id": "3b06ddbb-a409-42db-8707-476509a1509a",
+        "raw_rule": "java:S5164",
+        "primary_class": "org.apache.druid.segment.incremental.OffheapIncrementalIndex",
+        "message": "Use \"remove()\" instead of \"set(null)\".",
+        "spans": [
+          {
+            "file": "src/org/apache/druid/segment/incremental/OffheapIncrementalIndex.java",
+            "start": 242,
+            "end": 242
+          }
+        ]
+      },
+      {
+        "raw_ordinal": 1126,
+        "native_id": "d4bde149-d21d-49c3-9ae9-0ac72a9bdfa7",
+        "raw_rule": "java:S5164",
+        "primary_class": "org.apache.druid.segment.incremental.OnheapIncrementalIndex",
+        "message": "Use \"remove()\" instead of \"set(null)\".",
+        "spans": [
+          {
+            "file": "src/org/apache/druid/segment/incremental/OnheapIncrementalIndex.java",
+            "start": 235,
+            "end": 235
+          }
+        ]
+      },
+      {
+        "raw_ordinal": 1127,
+        "native_id": "4b950ded-e725-470a-bc0c-996735ec1512",
+        "raw_rule": "java:S5164",
+        "primary_class": "org.apache.druid.segment.incremental.OnheapIncrementalIndex",
+        "message": "Use \"remove()\" instead of \"set(null)\".",
+        "spans": [
+          {
+            "file": "src/org/apache/druid/segment/incremental/OnheapIncrementalIndex.java",
+            "start": 262,
+            "end": 262
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tool": "Sonar",
+    "release": "groovy-2.4.5",
+    "warnings": [
+      {
+        "raw_ordinal": 2309,
+        "native_id": "835c828f-4dc8-42b8-955c-daa4cdfd4a23",
+        "raw_rule": "java:S5164",
+        "primary_class": "groovy.util.GroovyScriptEngine",
+        "message": "Use \"remove()\" instead of \"set(null)\".",
+        "spans": [
+          {
+            "file": "src/groovy/util/GroovyScriptEngine.java",
+            "start": 298,
+            "end": 298
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tool": "Sonar",
+    "release": "mvel2-2.1.4.Final",
+    "warnings": [
+      {
+        "raw_ordinal": 1090,
+        "native_id": "4b36889e-f30c-43d1-bca6-bf8a082c288d",
+        "raw_rule": "java:S5164",
+        "primary_class": "org.mvel2.compiler.ExpressionCompiler",
+        "message": "Use \"remove()\" instead of \"set(null)\".",
+        "spans": [
+          {
+            "file": "src/org/mvel2/compiler/ExpressionCompiler.java",
+            "start": 305,
+            "end": 305
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "tool": "Sonar",
+    "release": "mvel2-2.1.5.Final",
+    "warnings": [
+      {
+        "raw_ordinal": 1090,
+        "native_id": "b49d6a32-fc5b-47bf-b94b-bcd29030d149",
+        "raw_rule": "java:S5164",
+        "primary_class": "org.mvel2.compiler.ExpressionCompiler",
+        "message": "Use \"remove()\" instead of \"set(null)\".",
+        "spans": [
+          {
+            "file": "src/org/mvel2/compiler/ExpressionCompiler.java",
+            "start": 305,
+            "end": 305
+          }
+        ]
+      }
+    ]
+  }
+]

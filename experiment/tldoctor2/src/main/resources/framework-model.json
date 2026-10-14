@@ -1,0 +1,63 @@
+{
+  "_comment": "Framework model for tldoctor2 (FSE-PLAN §3.5). Every list is subject to the sensitivity analysis of RQ3.2. Only entries required by the design set are listed.",
+
+  "tlLikeClasses": [
+    "java.lang.ThreadLocal", "java.lang.InheritableThreadLocal",
+    "io.netty.util.concurrent.FastThreadLocal",
+    "org.apache.lucene.util.CloseableThreadLocal",
+    "com.alibaba.ttl.TransmittableThreadLocal"
+  ],
+
+  "facades": {
+    "org.slf4j.MDC":                        { "set": ["put", "setContextMap"], "remove": ["remove", "clear"] },
+    "org.apache.logging.log4j.ThreadContext": { "set": ["put", "putAll", "push", "putIfNull"], "remove": ["remove", "removeAll", "clearAll", "clearMap", "clearStack", "pop"] },
+    "org.apache.log4j.MDC":                 { "set": ["put"], "remove": ["remove", "clear"] },
+    "org.apache.log4j.NDC":                 { "set": ["push"], "remove": ["pop", "remove", "clear"] },
+    "org.jboss.logging.MDC":                { "set": ["put"], "remove": ["remove", "clear"] },
+    "org.jboss.logging.NDC":                { "set": ["push"], "remove": ["pop", "clear"] }
+  },
+
+  "jdkPrefixes": ["java.", "javax.", "jdk.", "sun.", "com.sun.", "org.w3c.", "org.xml.", "org.ietf.", "org.omg.", "kotlin.", "scala."],
+
+  "neverThrowPrefixes": ["java.lang.", "java.util.", "java.util.function.", "java.util.concurrent.atomic.", "java.util.concurrent.ConcurrentHashMap", "java.util.concurrent.ConcurrentMap", "java.util.concurrent.CopyOnWriteArrayList", "org.slf4j.Logger", "org.apache.logging.log4j.Logger", "org.apache.log4j.Logger", "java.util.logging.Logger", "kotlin.jvm.internal.", "scala.runtime."],
+
+  "unknownFactoryMethods": ["newInstance", "newFactory", "load", "forName", "getProvider", "lookup", "getService", "create"],
+  "unknownFactoryClasses": ["java.util.ServiceLoader", "java.lang.Class", "java.lang.reflect.", "javax.xml.parsers.", "javax.xml.transform.", "javax.xml.stream.", "javax.xml.validation.", "javax.xml.datatype.", "java.nio.charset.Charset", "java.security.", "javax.crypto.", "javax.naming.", "java.sql.DriverManager"],
+
+  "entryPatterns": [
+    { "kind": "CONTAINER",
+      "supertypePrefixes": ["javax.servlet.", "jakarta.servlet.", "io.netty.channel.", "org.apache.thrift.", "javax.annotation.processing.", "org.gradle.api.", "org.apache.maven.plugin.", "org.springframework.web.", "javax.ws.rs.", "jakarta.ws.rs.", "org.eclipse.jetty.server.Handler", "io.undertow.server.HttpHandler", "io.vertx.core.Handler", "org.apache.camel.Processor", "javax.faces.", "jakarta.faces.", "org.eclipse.core.runtime.jobs.Job", "org.eclipse.core.resources.IResourceChangeListener", "org.apache.catalina.", "org.glassfish.", "org.jboss.msc.service.Service", "org.osgi.framework.BundleActivator", "org.springframework.context.", "org.springframework.beans.factory.", "javax.enterprise.", "jakarta.enterprise.", "org.apache.kafka.streams.", "org.apache.flink.api.common.functions.", "org.apache.flink.streaming.api.functions.", "org.apache.spark.api.java.function.", "org.apache.hadoop.mapreduce.", "com.sun.net.httpserver.HttpHandler", "org.jboss.resteasy.", "io.grpc.ServerCall", "io.grpc.ServerInterceptor", "io.grpc.BindableService", "org.apache.dubbo.rpc.Filter", "com.alibaba.dubbo.rpc.Filter", "org.jline.", "javax.swing.", "java.awt.event."],
+      "annotationPrefixes": ["org.springframework.web.bind.annotation.", "javax.ws.rs.", "jakarta.ws.rs.", "javax.servlet.annotation.", "jakarta.servlet.annotation.", "org.springframework.scheduling.annotation.Scheduled", "org.springframework.kafka.annotation.", "org.springframework.jms.annotation.", "org.springframework.amqp.rabbit.annotation.", "io.quarkus.scheduler.Scheduled", "org.eclipse.microprofile.", "javax.ejb.", "jakarta.ejb.", "javax.jws.", "jakarta.jws.", "io.micronaut.http.annotation.", "javax.websocket.", "jakarta.websocket.", "javax.annotation.PostConstruct", "jakarta.annotation.PostConstruct", "org.springframework.context.event.EventListener", "org.springframework.transaction.annotation.Transactional", "io.micronaut.scheduling.annotation.Scheduled"],
+      "methodNames": [] },
+    { "kind": "POOLED",
+      "supertypePrefixes": ["java.lang.Runnable", "java.util.concurrent.Callable", "java.util.concurrent.RecursiveTask", "java.util.concurrent.RecursiveAction", "java.util.concurrent.ForkJoinTask", "java.util.TimerTask", "org.quartz.Job", "java.nio.channels.CompletionHandler", "org.reactivestreams.Subscriber", "java.util.concurrent.Flow$Subscriber", "io.reactivex.functions.", "reactor.core.", "scala.Function0", "scala.Function1", "scala.runtime.AbstractFunction", "kotlin.jvm.functions.", "kotlinx.coroutines."],
+      "annotationPrefixes": ["org.springframework.scheduling.annotation.Async"],
+      "methodNames": ["run", "call", "get", "apply", "accept", "test", "compute", "exec", "execute", "onNext", "onComplete", "onError", "completed", "failed", "invoke", "invokeSuspend"] },
+    { "kind": "LONGLIVED",
+      "supertypePrefixes": ["java.lang.Thread"],
+      "annotationPrefixes": [],
+      "methodNames": ["run"] },
+    { "kind": "SHORTLIVED",
+      "supertypePrefixes": [],
+      "annotationPrefixes": ["org.junit.", "org.testng.annotations.", "org.junit.jupiter."],
+      "methodNames": [],
+      "mainMethod": true }
+  ],
+
+  "installerNames": "^(begin|start|open|init|initialize|enter|push|set[A-Z].*|set|bind|attach|activate|register|save|store|put|put[A-Z].*|install|apply|with[A-Z].*|create|new[A-Z].*|acquire|mark|add[A-Z].*|on[A-Z].*Start.*|pre[A-Z].*|before[A-Z].*|of|from|for[A-Z].*|wrap|capture|snapshot|stash.*|copy.*|get[A-Z].*|obtain.*|lookup.*|current.*|resolve.*|load.*|prepare.*|configure.*|setup.*|setUp)$",
+  "endNames": "^(close|commit|rollback|end|finish|stop|destroy|shutdown|exit|release|dispose|clear|reset|complete|abort|cancel|terminate|unbind|detach|deactivate|unregister|remove|restore|pop|do(Commit|Rollback|Close|Finish|End|Stop|Destroy|Release|Shutdown)|after[A-Z].*|post[A-Z].*|on[A-Z].*(End|Stop|Complete|Finish|Close|Destroy).*|contextDestroyed|preDestroy|tearDown|cleanup|cleanUp|clean|done)$",
+  "lifecycleEndNames": "^(close|destroy|shutdown|stop|dispose|terminate|contextDestroyed|preDestroy|cleanup|cleanUp|release|shutdownNow|onStop|onDestroy|onShutdown|clearThreadLocals|removeThreadLocals|cleanupThreadLocals)$",
+
+  "growableTypes": ["java.lang.StringBuilder", "java.lang.StringBuffer", "java.io.ByteArrayOutputStream", "java.io.CharArrayWriter", "java.io.StringWriter", "java.nio.ByteBuffer", "java.nio.CharBuffer", "java.util.ArrayList", "java.util.LinkedList", "java.util.HashMap", "java.util.LinkedHashMap", "java.util.TreeMap", "java.util.HashSet", "java.util.LinkedHashSet", "java.util.TreeSet", "java.util.ArrayDeque", "java.util.Stack", "java.util.Vector", "java.util.Hashtable", "java.util.IdentityHashMap", "java.util.WeakHashMap", "java.util.concurrent.ConcurrentHashMap", "java.util.PriorityQueue", "java.util.Map", "java.util.List", "java.util.Set", "java.util.Deque", "java.util.Queue", "java.util.Collection"],
+  "growableNameHints": ["Buffer", "Builder", "Cache", "Pool", "Recycler", "Stack", "Deque", "Queue", "List", "Map", "Set", "OutputStream", "Writer", "Encoder", "Decoder", "Serializer", "Kryo", "Batch", "Table", "Array", "Registry", "Store", "Collector", "Accumulator"],
+
+  "poolCreationClasses": ["java.util.concurrent.Executors", "java.util.concurrent.ThreadPoolExecutor", "java.util.concurrent.ScheduledThreadPoolExecutor", "java.util.concurrent.ForkJoinPool", "io.netty.util.concurrent.DefaultEventExecutorGroup", "io.netty.channel.nio.NioEventLoopGroup", "java.util.Timer", "java.lang.Thread"],
+  "delegationMethods": ["java.util.concurrent.Executor.execute", "java.util.concurrent.ExecutorService.submit", "java.util.concurrent.ExecutorService.invokeAll", "java.util.concurrent.ExecutorService.invokeAny", "java.util.concurrent.CompletableFuture.supplyAsync", "java.util.concurrent.CompletableFuture.runAsync", "java.util.concurrent.CompletableFuture.thenApplyAsync", "java.util.concurrent.CompletableFuture.thenAcceptAsync", "java.util.concurrent.CompletableFuture.thenRunAsync", "java.util.concurrent.CompletableFuture.thenComposeAsync", "java.util.concurrent.CompletableFuture.whenCompleteAsync", "java.util.concurrent.CompletableFuture.handleAsync", "java.lang.Thread.start", "java.util.concurrent.ForkJoinPool.invoke", "java.util.concurrent.ForkJoinPool.execute", "java.util.concurrent.ForkJoinPool.submit", "java.util.concurrent.ScheduledExecutorService.schedule", "java.util.concurrent.ScheduledExecutorService.scheduleAtFixedRate", "java.util.concurrent.ScheduledExecutorService.scheduleWithFixedDelay", "java.util.stream.BaseStream.parallel", "java.util.Collection.parallelStream", "java.util.Timer.schedule"],
+
+  "longLivedHostHints": ["Manager", "Service", "Factory", "Registry", "Holder", "Handler", "Provider", "Engine", "Singleton", "Module", "Plugin", "Component", "Repository", "Store", "Server", "Scheduler", "Dispatcher", "Container", "Utils", "Util", "Helper", "Config", "Configuration", "Cache", "Pool", "Codec", "Support", "Template", "Resolver", "Filter", "Interceptor", "Listener", "Adapter", "Bean", "Dao", "Client", "Bus", "Broker", "Executor", "Loader", "Mapper", "Router", "Gateway", "Controller", "Environment", "Runtime", "Application", "System", "Kernel", "Logger", "Metrics", "Monitor"],
+  "churnHostHints": ["Session", "Transaction", "Request", "Reader", "Writer", "Iterator", "Parser", "Scope", "Invocation", "Task", "Job", "Query", "Connection", "Stream", "Pipeline", "Batch", "Span", "Frame", "Page", "Tx", "Cursor", "Entry", "Record", "Message", "Event", "Command", "Operation", "Call", "Exchange", "Unit", "Round", "Attempt", "Segment", "Chunk", "Block", "Row", "Tuple", "Document", "Element", "Node", "Token", "Key", "Secret", "Graph", "Inserter", "Emitter", "Decorator"],
+  "singletonAnnotations": ["javax.inject.Singleton", "jakarta.inject.Singleton", "org.springframework.stereotype.", "javax.enterprise.context.ApplicationScoped", "jakarta.enterprise.context.ApplicationScoped", "io.quarkus.arc.", "com.google.inject.Singleton", "org.springframework.context.annotation.Configuration", "org.springframework.boot.autoconfigure.", "org.apache.felix.scr.annotations.Component", "org.osgi.service.component.annotations.Component"],
+  "testClassPattern": "(^|\\.)(Test[A-Z][A-Za-z0-9_$]*|[A-Za-z0-9_$]*Tests?|[A-Za-z0-9_$]*TestCase|[A-Za-z0-9_$]*IT|Mock[A-Za-z0-9_$]*)$",
+
+  "limits": { "maxDispatchTargets": 16, "ctxMaxDepth": 14, "ctxMaxVisited": 20000, "summaryRounds": 6, "valueChaseDepth": 8, "reportDepth": 2, "entryReportDepth": 6 }
+}

@@ -1,0 +1,12 @@
+tool,macro,origin,defects,analyzed,located,controls,control_analyzed,control_located,both,some,all,silent,buggy_versions_ok,warning_total,warning_median,warning_max,units,units_located,release_ok,release_partial,release_usable,release_raw_unavailable,release_no_sources,release_failures,unique_located,defect_buggy_not_ok
+SpotBugs,SpotBugs,native,82,79,19,64,64,4,79,9,9,9,130,150,0.0,21,67,14,185,73,258,0,0,6,0,3
+PMD,Pmd,native,82,80,68,64,64,45,80,32,19,17,131,2981,9,202,67,54,260,0,260,0,4,0,2,2
+Infer,Infer,native,82,77,0,64,62,0,76,0,0,0,127,2,0,2,67,0,251,0,251,0,4,9,0,5
+CodeQL,CodeQL,native,82,72,4,64,61,7,71,2,2,2,123,29,0,5,67,4,242,0,242,0,4,18,0,10
+Error Prone,ErrorProne,native,82,79,23,64,63,13,78,9,8,6,129,176,0,14,67,20,255,0,255,0,4,5,0,3
+Sonar,Sonar,native,82,80,49,64,63,26,80,39,33,25,130,543,2.0,33,67,40,258,0,258,0,4,2,0,2
+SpotBugs-TL,SpotBugsTL,adaptation,82,82,46,64,64,30,82,25,24,16,133,825,2,85,67,38,264,0,264,0,0,0,0,0
+PMD-TL,PmdTL,adaptation,82,80,45,64,64,28,80,24,22,15,131,589,2,68,67,37,260,0,260,0,4,0,0,2
+Infer-TL,InferTL,adaptation,82,77,38,64,62,18,76,27,22,20,127,400,1,67,67,31,251,0,251,0,4,9,0,5
+Typestate-only,Typestate,adaptation,82,82,33,64,64,21,82,27,21,15,133,1406,1,331,67,28,264,0,264,0,0,0,0,0
+LifeTL,LifeTL,adaptation,82,82,67,64,64,26,82,42,33,22,133,1322,3,298,67,53,264,0,264,0,0,0,1,0

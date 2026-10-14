@@ -1,0 +1,457 @@
+{
+  "schema": "threadlocal-case-diagnostics-1",
+  "tool_source": "experiment/tldoctor2",
+  "records": [
+    {
+      "case": "influx",
+      "repository": "influxdata/influxdb-java",
+      "issue": 1019,
+      "side": "post",
+      "revision": "455ee29387e20191ecc7bd51ef0b0d786527b527",
+      "scope": "unchanged upstream target class and nested classes",
+      "status": "OK",
+      "coverage": {
+        "classes": 5,
+        "methodsWithBody": 58,
+        "bodyErrors": 0,
+        "graphErrors": 0,
+        "unresolvedInvokes": 0,
+        "tlCount": 2,
+        "time_ms": 1730
+      },
+      "diagnostics": [
+        {
+          "rule": "O1_NO_CLEARER",
+          "obligations": [
+            "O1"
+          ],
+          "dominant": "O1",
+          "severity": "medium",
+          "tier": "REPORT",
+          "tl": "<org.influxdb.dto.Point: java.lang.ThreadLocal CACHED_STRINGBUILDERS>",
+          "tlKind": "FIELD",
+          "tlDeclClass": "org.influxdb.dto.Point",
+          "tlRuntimeClass": "org.influxdb.dto.Point$lambda_static_1__3",
+          "method": "<org.influxdb.dto.Point: java.lang.String lineProtocol(java.util.concurrent.TimeUnit)>",
+          "methodClass": "org.influxdb.dto.Point",
+          "line": 560,
+          "detail": "no remove()/restore anywhere in the jar; install sites [Point.lineProtocol]; ctx=[UNKNOWN]",
+          "sites": null,
+          "facts": {
+            "static": true,
+            "host": "LONGLIVED",
+            "hostReason": "static",
+            "loader": "JDK",
+            "valueTypes": [
+              "java.lang.StringBuilder"
+            ],
+            "growable": true,
+            "softWrapped": false,
+            "ctx": [
+              "UNKNOWN"
+            ],
+            "inheritable": false,
+            "outerCapture": false,
+            "keyApp": false,
+            "lazyInit": true,
+            "withInitial": true
+          }
+        },
+        {
+          "rule": "O4_UNBOUNDED_VALUE",
+          "obligations": [
+            "O4"
+          ],
+          "dominant": "O4",
+          "severity": "medium",
+          "tier": "REPORT",
+          "tl": "<org.influxdb.dto.Point: java.lang.ThreadLocal CACHED_STRINGBUILDERS>",
+          "tlKind": "FIELD",
+          "tlDeclClass": "org.influxdb.dto.Point",
+          "tlRuntimeClass": "org.influxdb.dto.Point$lambda_static_1__3",
+          "method": null,
+          "methodClass": "org.influxdb.dto.Point",
+          "line": 0,
+          "detail": "growable value [java.lang.StringBuilder] retained per thread without remove/shrink; lazy-initialised",
+          "sites": null,
+          "facts": {
+            "static": true,
+            "host": "LONGLIVED",
+            "hostReason": "static",
+            "loader": "JDK",
+            "valueTypes": [
+              "java.lang.StringBuilder"
+            ],
+            "growable": true,
+            "softWrapped": false,
+            "ctx": [
+              "UNKNOWN"
+            ],
+            "inheritable": false,
+            "outerCapture": false,
+            "keyApp": false,
+            "lazyInit": true,
+            "withInitial": true
+          }
+        }
+      ]
+    },
+    {
+      "case": "influx",
+      "repository": "influxdata/influxdb-java",
+      "issue": 1019,
+      "side": "pre",
+      "revision": "5cb61c79f87fdc7af83999c97bea434ab0af33cc",
+      "scope": "unchanged upstream target class and nested classes",
+      "status": "OK",
+      "coverage": {
+        "classes": 5,
+        "methodsWithBody": 58,
+        "bodyErrors": 0,
+        "graphErrors": 0,
+        "unresolvedInvokes": 0,
+        "tlCount": 2,
+        "time_ms": 1735
+      },
+      "diagnostics": [
+        {
+          "rule": "O4_UNBOUNDED_VALUE",
+          "obligations": [
+            "O4"
+          ],
+          "dominant": "O4",
+          "severity": "medium",
+          "tier": "REPORT",
+          "tl": "<org.influxdb.dto.Point: java.lang.ThreadLocal CACHED_STRINGBUILDERS>",
+          "tlKind": "FIELD",
+          "tlDeclClass": "org.influxdb.dto.Point",
+          "tlRuntimeClass": "org.influxdb.dto.Point$lambda_static_1__3",
+          "method": null,
+          "methodClass": "org.influxdb.dto.Point",
+          "line": 0,
+          "detail": "growable value [java.lang.StringBuilder] retained per thread without remove/shrink; lazy-initialised",
+          "sites": null,
+          "facts": {
+            "static": true,
+            "host": "LONGLIVED",
+            "hostReason": "static",
+            "loader": "JDK",
+            "valueTypes": [
+              "java.lang.StringBuilder"
+            ],
+            "growable": true,
+            "softWrapped": false,
+            "ctx": [
+              "UNKNOWN"
+            ],
+            "inheritable": false,
+            "outerCapture": false,
+            "keyApp": false,
+            "lazyInit": true,
+            "withInitial": true
+          }
+        }
+      ]
+    },
+    {
+      "case": "quickfix",
+      "repository": "quickfix-j/quickfixj",
+      "issue": 1137,
+      "side": "post",
+      "revision": "43ecb400f7d1bd7cff35f6b6a4b60ef02e683aea",
+      "scope": "unchanged upstream target class and nested classes",
+      "status": "OK",
+      "coverage": {
+        "classes": 6,
+        "methodsWithBody": 97,
+        "bodyErrors": 0,
+        "graphErrors": 0,
+        "unresolvedInvokes": 2,
+        "tlCount": 2,
+        "time_ms": 2482
+      },
+      "diagnostics": [
+        {
+          "rule": "O3_PIN",
+          "obligations": [
+            "O3"
+          ],
+          "dominant": "O3",
+          "severity": "high",
+          "tier": "REPORT",
+          "tl": "<quickfix.Message: java.lang.ThreadLocal STRING_CONTEXTS>",
+          "tlKind": "FIELD",
+          "tlDeclClass": "quickfix.Message",
+          "tlRuntimeClass": "quickfix.Message$init__1",
+          "method": null,
+          "methodClass": "quickfix.Message",
+          "line": 0,
+          "detail": "value types [quickfix.Message$Context]; static; lazy; ctx=[UNKNOWN]; no remover",
+          "sites": null,
+          "facts": {
+            "static": true,
+            "host": "LONGLIVED",
+            "hostReason": "static",
+            "loader": "APP",
+            "valueTypes": [
+              "quickfix.Message$Context"
+            ],
+            "growable": false,
+            "softWrapped": false,
+            "ctx": [
+              "UNKNOWN"
+            ],
+            "inheritable": false,
+            "outerCapture": false,
+            "keyApp": false,
+            "lazyInit": true,
+            "withInitial": true
+          }
+        }
+      ]
+    },
+    {
+      "case": "quickfix",
+      "repository": "quickfix-j/quickfixj",
+      "issue": 1137,
+      "side": "pre",
+      "revision": "f871a80978279a182282319fedeb3e029dbbda4d",
+      "scope": "unchanged upstream target class and nested classes",
+      "status": "OK",
+      "coverage": {
+        "classes": 6,
+        "methodsWithBody": 96,
+        "bodyErrors": 0,
+        "graphErrors": 0,
+        "unresolvedInvokes": 2,
+        "tlCount": 2,
+        "time_ms": 2467
+      },
+      "diagnostics": [
+        {
+          "rule": "O3_PIN",
+          "obligations": [
+            "O3"
+          ],
+          "dominant": "O3",
+          "severity": "high",
+          "tier": "REPORT",
+          "tl": "<quickfix.Message: java.lang.ThreadLocal stringContexts>",
+          "tlKind": "FIELD",
+          "tlDeclClass": "quickfix.Message",
+          "tlRuntimeClass": "quickfix.Message$1",
+          "method": null,
+          "methodClass": "quickfix.Message",
+          "line": 0,
+          "detail": "value types [quickfix.Message$Context]; static; lazy; ctx=[UNKNOWN]; no remover",
+          "sites": null,
+          "facts": {
+            "static": true,
+            "host": "LONGLIVED",
+            "hostReason": "static",
+            "loader": "APP",
+            "valueTypes": [
+              "quickfix.Message$Context"
+            ],
+            "growable": false,
+            "softWrapped": false,
+            "ctx": [
+              "UNKNOWN"
+            ],
+            "inheritable": false,
+            "outerCapture": false,
+            "keyApp": true,
+            "lazyInit": true,
+            "withInitial": false
+          }
+        }
+      ]
+    },
+    {
+      "case": "redis",
+      "repository": "redis/redis-om-spring",
+      "issue": 718,
+      "side": "post",
+      "revision": "6a5b266317399a96fc3b83177eb1973fbfb1cf12",
+      "scope": "unchanged upstream target class and nested classes",
+      "status": "OK",
+      "coverage": {
+        "classes": 2,
+        "methodsWithBody": 21,
+        "bodyErrors": 0,
+        "graphErrors": 0,
+        "unresolvedInvokes": 0,
+        "tlCount": 1,
+        "time_ms": 1268
+      },
+      "diagnostics": [
+        {
+          "rule": "API_PAIR",
+          "obligations": [],
+          "dominant": "-",
+          "severity": "none",
+          "tier": "NOTE",
+          "tl": "<com.redis.om.spring.indexing.RedisIndexContext: java.lang.ThreadLocal CONTEXT_HOLDER>",
+          "tlKind": "FIELD",
+          "tlDeclClass": "com.redis.om.spring.indexing.RedisIndexContext",
+          "tlRuntimeClass": "java.lang.ThreadLocal",
+          "method": "<com.redis.om.spring.indexing.RedisIndexContext: void setContext(com.redis.om.spring.indexing.RedisIndexContext)>",
+          "methodClass": "com.redis.om.spring.indexing.RedisIndexContext",
+          "line": 61,
+          "detail": "install in setContext with clearer(s) [RedisIndexContext.clearContext, RedisIndexContext.close, RedisIndexContext.runWithContext, RedisIndexContext.callWithContext]",
+          "sites": null,
+          "facts": {
+            "static": true,
+            "host": "LONGLIVED",
+            "hostReason": "static",
+            "loader": "APP",
+            "valueTypes": [
+              "com.redis.om.spring.indexing.RedisIndexContext",
+              "java.lang.Object"
+            ],
+            "growable": false,
+            "softWrapped": false,
+            "ctx": [
+              "UNKNOWN"
+            ],
+            "inheritable": false,
+            "outerCapture": false,
+            "keyApp": false,
+            "lazyInit": false,
+            "withInitial": false
+          }
+        },
+        {
+          "rule": "O1_ROOT_LEAK",
+          "obligations": [
+            "O1"
+          ],
+          "dominant": "O1",
+          "severity": "high",
+          "tier": "REPORT",
+          "tl": "<com.redis.om.spring.indexing.RedisIndexContext: java.lang.ThreadLocal CONTEXT_HOLDER>",
+          "tlKind": "FIELD",
+          "tlDeclClass": "com.redis.om.spring.indexing.RedisIndexContext",
+          "tlRuntimeClass": "java.lang.ThreadLocal",
+          "method": "<com.redis.om.spring.indexing.RedisIndexContext: void close()>",
+          "methodClass": "com.redis.om.spring.indexing.RedisIndexContext",
+          "line": 98,
+          "detail": "normal-exit [INST, CLEARED] root dist=0",
+          "sites": null,
+          "facts": {
+            "static": true,
+            "host": "LONGLIVED",
+            "hostReason": "static",
+            "loader": "APP",
+            "valueTypes": [
+              "com.redis.om.spring.indexing.RedisIndexContext",
+              "java.lang.Object"
+            ],
+            "growable": false,
+            "softWrapped": false,
+            "ctx": [
+              "UNKNOWN"
+            ],
+            "inheritable": false,
+            "outerCapture": false,
+            "keyApp": false,
+            "lazyInit": false,
+            "withInitial": false
+          }
+        },
+        {
+          "rule": "API_PAIR",
+          "obligations": [],
+          "dominant": "-",
+          "severity": "none",
+          "tier": "NOTE",
+          "tl": "<com.redis.om.spring.indexing.RedisIndexContext: java.lang.ThreadLocal CONTEXT_HOLDER>",
+          "tlKind": "FIELD",
+          "tlDeclClass": "com.redis.om.spring.indexing.RedisIndexContext",
+          "tlRuntimeClass": "java.lang.ThreadLocal",
+          "method": "<com.redis.om.spring.indexing.RedisIndexContext: com.redis.om.spring.indexing.RedisIndexContext activate()>",
+          "methodClass": "com.redis.om.spring.indexing.RedisIndexContext",
+          "line": 87,
+          "detail": "install in activate with clearer(s) [RedisIndexContext.clearContext, RedisIndexContext.close, RedisIndexContext.runWithContext, RedisIndexContext.callWithContext]",
+          "sites": null,
+          "facts": {
+            "static": true,
+            "host": "LONGLIVED",
+            "hostReason": "static",
+            "loader": "APP",
+            "valueTypes": [
+              "com.redis.om.spring.indexing.RedisIndexContext",
+              "java.lang.Object"
+            ],
+            "growable": false,
+            "softWrapped": false,
+            "ctx": [
+              "UNKNOWN"
+            ],
+            "inheritable": false,
+            "outerCapture": false,
+            "keyApp": false,
+            "lazyInit": false,
+            "withInitial": false
+          }
+        }
+      ]
+    },
+    {
+      "case": "redis",
+      "repository": "redis/redis-om-spring",
+      "issue": 718,
+      "side": "pre",
+      "revision": "36307f23f427535a83f0d33c7662c5c97a913371",
+      "scope": "unchanged upstream target class and nested classes",
+      "status": "OK",
+      "coverage": {
+        "classes": 2,
+        "methodsWithBody": 19,
+        "bodyErrors": 0,
+        "graphErrors": 0,
+        "unresolvedInvokes": 0,
+        "tlCount": 1,
+        "time_ms": 1260
+      },
+      "diagnostics": [
+        {
+          "rule": "API_PAIR",
+          "obligations": [],
+          "dominant": "-",
+          "severity": "none",
+          "tier": "NOTE",
+          "tl": "<com.redis.om.spring.indexing.RedisIndexContext: java.lang.ThreadLocal CONTEXT_HOLDER>",
+          "tlKind": "FIELD",
+          "tlDeclClass": "com.redis.om.spring.indexing.RedisIndexContext",
+          "tlRuntimeClass": "java.lang.ThreadLocal",
+          "method": "<com.redis.om.spring.indexing.RedisIndexContext: void setContext(com.redis.om.spring.indexing.RedisIndexContext)>",
+          "methodClass": "com.redis.om.spring.indexing.RedisIndexContext",
+          "line": 46,
+          "detail": "install in setContext with clearer(s) [RedisIndexContext.clearContext, RedisIndexContext.runWithContext, RedisIndexContext.callWithContext]",
+          "sites": null,
+          "facts": {
+            "static": true,
+            "host": "LONGLIVED",
+            "hostReason": "static",
+            "loader": "APP",
+            "valueTypes": [
+              "com.redis.om.spring.indexing.RedisIndexContext",
+              "java.lang.Object"
+            ],
+            "growable": false,
+            "softWrapped": false,
+            "ctx": [
+              "UNKNOWN"
+            ],
+            "inheritable": false,
+            "outerCapture": false,
+            "keyApp": false,
+            "lazyInit": false,
+            "withInitial": false
+          }
+        }
+      ]
+    }
+  ]
+}

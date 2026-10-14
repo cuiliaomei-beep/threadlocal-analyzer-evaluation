@@ -1,0 +1,10 @@
+{
+  "schema": "threadlocal-author-report-scope-1",
+  "excluded_reports": [
+    {
+      "repository": "apache/karaf",
+      "issue_number": 2278,
+      "reason": "Not an author-submitted report."
+    }
+  ]
+}

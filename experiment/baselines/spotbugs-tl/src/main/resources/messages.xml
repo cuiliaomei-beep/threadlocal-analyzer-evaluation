@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MessageCollection>
+
+    <Detector class="edu.anon.spotbugs.threadlocal.TL_SCO_MissingRemoveDetector">
+        <Details>
+            Detects ThreadLocal values that are installed but not removed before
+            the logical method scope exits.
+        </Details>
+    </Detector>
+
+    <BugPattern type="TL_SCO_MISSING_REMOVE">
+        <ShortDescription>ThreadLocal value may not be removed</ShortDescription>
+        <LongDescription>
+            ThreadLocal value is installed but no matching cleanup operation is found.
+        </LongDescription>
+        <Details>
+            This warning approximates Scope-Cleanup Omission. A ThreadLocal value
+            written in a request, task, or callback context may survive on a reused
+            worker thread if remove() or an equivalent cleanup operation is missing.
+        </Details>
+    </BugPattern>
+
+    <BugPattern type="TL_CLP_STATIC_THREADLOCAL">
+        <ShortDescription>Static ThreadLocal may pin application-defined values</ShortDescription>
+        <LongDescription>
+            Static ThreadLocal may retain application-defined values across deployment lifetime.
+        </LongDescription>
+        <Details>
+            This warning approximates Class-Loader Pinning. Static ThreadLocal fields
+            or static holders can keep application-defined objects reachable through
+            container-managed threads and may prevent class unloading.
+        </Details>
+    </BugPattern>
+
+    <BugPattern type="TL_CPM_UNBALANCED_CONTEXT">
+        <ShortDescription>ThreadLocal context propagation may be unbalanced</ShortDescription>
+        <LongDescription>
+            ThreadLocal context is installed across an async boundary without guaranteed restoration.
+        </LongDescription>
+        <Details>
+            This warning approximates Context-Propagation Mismatch. A wrapper installs
+            ThreadLocal context before delegated execution but does not restore the
+            previous value on all paths.
+        </Details>
+    </BugPattern>
+
+    <BugPattern type="TL_HVR_HEAVY_VALUE_RETENTION">
+        <ShortDescription>ThreadLocal may retain heavyweight values</ShortDescription>
+        <LongDescription>
+            ThreadLocal stores heavyweight or growth-prone values without clear bounding or cleanup.
+        </LongDescription>
+        <Details>
+            This warning approximates Heavyweight-Value Retention. ThreadLocal values
+            such as arrays, buffers, builders, parsers, serializers, or compression
+            state may retain peak-size memory on long-lived workers.
+        </Details>
+    </BugPattern>
+
+    <!-- added for loadability (see extract_from_md.py): descriptions only -->
+    <Detector class="edu.anon.spotbugs.threadlocal.TL_CLP_StaticThreadLocalDetector">
+        <Details>Detects static ThreadLocal fields or static holders.</Details>
+    </Detector>
+    <Detector class="edu.anon.spotbugs.threadlocal.TL_CPM_UnbalancedContextDetector">
+        <Details>Detects unbalanced ThreadLocal context propagation across async boundaries.</Details>
+    </Detector>
+    <Detector class="edu.anon.spotbugs.threadlocal.TL_HVR_HeavyValueRetentionDetector">
+        <Details>Detects ThreadLocal fields with heavyweight or growth-prone value types.</Details>
+    </Detector>
+    <BugCode abbrev="TL">ThreadLocal misuse</BugCode>
+
+</MessageCollection>

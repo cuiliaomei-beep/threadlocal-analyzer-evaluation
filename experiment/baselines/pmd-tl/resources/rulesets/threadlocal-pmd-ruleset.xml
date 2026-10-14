@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="ThreadLocal Custom Rules"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0
+                             https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
+    <description>
+        PMD-TL: lightweight ThreadLocal-specific rules for detecting common
+        ThreadLocal misuse patterns. These rules are intended as a rule-based
+        adapted baseline rather than a full semantic detector.
+    </description>
+
+    <rule name="TL_SCO_MissingRemove"
+          language="java"
+          message="ThreadLocal value is set but not removed before the method exits."
+          class="edu.anon.pmd.threadlocal.TL_SCO_MissingRemoveRule">
+        <description>
+            Detects ThreadLocal.set(...) operations in request/task-like methods
+            without a corresponding ThreadLocal.remove() in the same method or finally block.
+        </description>
+        <priority>2</priority>
+        <properties>
+            <property name="checkFinallyOnly" value="false"/>
+            <property name="recognizeHolderMethods" value="true"/>
+        </properties>
+    </rule>
+
+    <rule name="TL_CLP_StaticThreadLocal"
+          language="java"
+          message="Static ThreadLocal may retain application-defined values across deployment lifetime."
+          class="edu.anon.pmd.threadlocal.TL_CLP_StaticThreadLocalRule">
+        <description>
+            Detects static ThreadLocal fields or static holders that store
+            application-defined values and may cause class-loader pinning.
+        </description>
+        <priority>2</priority>
+        <properties>
+            <property name="ignoreJdkTypes" value="true"/>
+            <property name="checkAnonymousInitialValue" value="true"/>
+            <property name="checkStaticHolders" value="true"/>
+        </properties>
+    </rule>
+
+    <rule name="TL_CPM_UnbalancedContext"
+          language="java"
+          message="ThreadLocal context is propagated across an async boundary without guaranteed restoration."
+          class="edu.anon.pmd.threadlocal.TL_CPM_UnbalancedContextRule">
+        <description>
+            Detects common async propagation patterns where ThreadLocal state is installed
+            before delegated execution but not restored in a finally block.
+        </description>
+        <priority>2</priority>
+        <properties>
+            <property name="checkRunnable" value="true"/>
+            <property name="checkCallable" value="true"/>
+            <property name="checkCompletableFuture" value="true"/>
+            <property name="checkExecutorWrappers" value="true"/>
+        </properties>
+    </rule>
+
+    <rule name="TL_HVR_HeavyValueRetention"
+          language="java"
+          message="ThreadLocal stores heavyweight or growth-prone values without clear bounding or cleanup."
+          class="edu.anon.pmd.threadlocal.TL_HVR_HeavyValueRetentionRule">
+        <description>
+            Detects ThreadLocal values whose types are likely heavyweight or growth-prone,
+            such as arrays, buffers, builders, parsers, serializers, or compression state.
+        </description>
+        <priority>3</priority>
+        <properties>
+            <property name="heavyTypes"
+                      value="byte[],char[],java.nio.ByteBuffer,java.lang.StringBuilder,java.lang.StringBuffer,java.io.ByteArrayOutputStream,java.text.DateFormat,java.text.SimpleDateFormat,javax.xml.parsers.DocumentBuilder,com.fasterxml.jackson.databind.ObjectMapper"/>
+            <property name="requireLongLivedEvidence" value="true"/>
+            <property name="suppressPrimitiveWrappers" value="true"/>
+        </properties>
+    </rule>
+
+</ruleset>

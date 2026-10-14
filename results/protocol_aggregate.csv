@@ -1,0 +1,39 @@
+﻿protocol,tool,source_tag,subset,dedicated_rule_present,defects,pre_usable_defects,located_defects,controls,pre_usable_controls,located_controls,paired_usable_defects,paired_located_defects,some_original_keys_disappear,all_original_keys_disappear,post_class_silent,pre_usable_defects_with_coverage_flags,paired_defects_with_coverage_flags
+related,SpotBugs,bl-spotbugs-full,tool_available,True,82,79,19,64,64,4,79,19,9,9,9,23,26
+related,SpotBugs,bl-spotbugs-full,common_pre,True,70,70,14,61,61,4,70,14,5,5,5,18,21
+related,SpotBugs,bl-spotbugs-full,common_paired,True,69,69,14,60,60,4,69,14,5,5,5,18,20
+related,SpotBugs,bl-spotbugs-full,run_ok_only,True,82,63,16,64,41,3,60,16,8,8,8,7,7
+related,PMD,bl-pmd,tool_available,False,82,80,68,64,64,45,80,68,32,19,17,80,80
+related,PMD,bl-pmd,common_pre,False,70,70,60,61,61,44,70,60,26,19,17,70,70
+related,PMD,bl-pmd,common_paired,False,69,69,59,60,60,43,69,59,25,18,16,69,69
+related,Infer,bl-infer,tool_available,False,82,77,0,64,62,0,76,0,0,0,0,25,26
+related,Infer,bl-infer,common_pre,False,70,70,0,61,61,0,69,0,0,0,0,18,19
+related,Infer,bl-infer,common_paired,False,69,69,0,60,60,0,69,0,0,0,0,18,19
+related,CodeQL,bl-codeql,tool_available,False,82,72,4,64,61,7,71,4,2,2,2,20,20
+related,CodeQL,bl-codeql,common_pre,False,70,70,3,61,61,7,69,3,1,1,1,18,18
+related,CodeQL,bl-codeql,common_paired,False,69,69,3,60,60,7,69,3,1,1,1,18,18
+related,Error Prone,bl-errorprone,tool_available,True,82,79,23,64,63,13,78,23,9,8,6,27,27
+related,Error Prone,bl-errorprone,common_pre,True,70,70,22,61,61,13,69,22,8,7,6,18,18
+related,Error Prone,bl-errorprone,common_paired,True,69,69,22,60,60,13,69,22,8,7,6,18,18
+related,Sonar,bl-sonar,tool_available,True,82,80,49,64,63,26,80,49,39,33,25,0,0
+related,Sonar,bl-sonar,common_pre,True,70,70,43,61,61,25,70,43,33,27,24,0,0
+related,Sonar,bl-sonar,common_paired,True,69,69,42,60,60,25,69,42,32,26,23,0,0
+dedicated,SpotBugs,bl-spotbugs-full,tool_available,True,82,79,0,64,64,0,79,0,0,0,0,23,26
+dedicated,SpotBugs,bl-spotbugs-full,common_pre,True,70,70,0,61,61,0,70,0,0,0,0,18,21
+dedicated,SpotBugs,bl-spotbugs-full,common_paired,True,69,69,0,60,60,0,69,0,0,0,0,18,20
+dedicated,SpotBugs,bl-spotbugs-full,run_ok_only,True,82,63,0,64,41,0,60,0,0,0,0,7,7
+dedicated,PMD,bl-pmd,tool_available,False,82,80,0,64,64,0,80,0,0,0,0,80,80
+dedicated,PMD,bl-pmd,common_pre,False,70,70,0,61,61,0,70,0,0,0,0,70,70
+dedicated,PMD,bl-pmd,common_paired,False,69,69,0,60,60,0,69,0,0,0,0,69,69
+dedicated,Infer,bl-infer,tool_available,False,82,77,0,64,62,0,76,0,0,0,0,25,26
+dedicated,Infer,bl-infer,common_pre,False,70,70,0,61,61,0,69,0,0,0,0,18,19
+dedicated,Infer,bl-infer,common_paired,False,69,69,0,60,60,0,69,0,0,0,0,18,19
+dedicated,CodeQL,bl-codeql,tool_available,False,82,72,0,64,61,0,71,0,0,0,0,20,20
+dedicated,CodeQL,bl-codeql,common_pre,False,70,70,0,61,61,0,69,0,0,0,0,18,18
+dedicated,CodeQL,bl-codeql,common_paired,False,69,69,0,60,60,0,69,0,0,0,0,18,18
+dedicated,Error Prone,bl-errorprone,tool_available,True,82,79,16,64,63,8,78,16,5,5,4,27,27
+dedicated,Error Prone,bl-errorprone,common_pre,True,70,70,15,61,61,8,69,15,4,4,3,18,18
+dedicated,Error Prone,bl-errorprone,common_paired,True,69,69,15,60,60,8,69,15,4,4,3,18,18
+dedicated,Sonar,bl-sonar,tool_available,True,82,80,37,64,63,15,80,37,27,27,24,0,0
+dedicated,Sonar,bl-sonar,common_pre,True,70,70,33,61,61,15,70,33,23,23,23,0,0
+dedicated,Sonar,bl-sonar,common_paired,True,69,69,32,60,60,15,69,32,22,22,22,0,0

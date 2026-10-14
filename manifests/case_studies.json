@@ -1,0 +1,73 @@
+{
+  "schema": "threadlocal-case-inputs-1",
+  "cases": [
+    {
+      "id": "quickfix",
+      "repository": "quickfix-j/quickfixj",
+      "issue_number": 1137,
+      "source_path": "quickfixj-base/src/main/java/quickfix/Message.java",
+      "scope": "upstream target class and its nested classes",
+      "revisions": {
+        "post": {
+          "commit": "43ecb400f7d1bd7cff35f6b6a4b60ef02e683aea",
+          "source_url": "https://raw.githubusercontent.com/quickfix-j/quickfixj/43ecb400f7d1bd7cff35f6b6a4b60ef02e683aea/quickfixj-base/src/main/java/quickfix/Message.java",
+          "source_sha256": "c934af83b0ce113b3885b15a78fcb49742c59094d402f68a563fd32400f41801"
+        },
+        "pre": {
+          "commit": "f871a80978279a182282319fedeb3e029dbbda4d",
+          "source_url": "https://raw.githubusercontent.com/quickfix-j/quickfixj/f871a80978279a182282319fedeb3e029dbbda4d/quickfixj-base/src/main/java/quickfix/Message.java",
+          "source_sha256": "f3410331e2cf7e4be55a0ed7b0f4c03ed288ecd91a9d0d418087585df8729983"
+        }
+      },
+      "dependency": {
+        "url": "https://repo.maven.apache.org/maven2/org/quickfixj/quickfixj-base/3.0.0/quickfixj-base-3.0.0.jar",
+        "sha256": "7f4f6d425f541e45c656184a6eaf980f7a2a87d147506a5d7376adc4721a24c0",
+        "bytes": 149613
+      }
+    },
+    {
+      "id": "redis",
+      "repository": "redis/redis-om-spring",
+      "issue_number": 718,
+      "source_path": "redis-om-spring/src/main/java/com/redis/om/spring/indexing/RedisIndexContext.java",
+      "scope": "upstream target class and its nested classes",
+      "revisions": {
+        "post": {
+          "commit": "6a5b266317399a96fc3b83177eb1973fbfb1cf12",
+          "source_url": "https://raw.githubusercontent.com/redis/redis-om-spring/6a5b266317399a96fc3b83177eb1973fbfb1cf12/redis-om-spring/src/main/java/com/redis/om/spring/indexing/RedisIndexContext.java",
+          "source_sha256": "7b596ea77934dcaddec28980ad16e9f0e54d176bd0540e672540f033dce30f5b"
+        },
+        "pre": {
+          "commit": "36307f23f427535a83f0d33c7662c5c97a913371",
+          "source_url": "https://raw.githubusercontent.com/redis/redis-om-spring/36307f23f427535a83f0d33c7662c5c97a913371/redis-om-spring/src/main/java/com/redis/om/spring/indexing/RedisIndexContext.java",
+          "source_sha256": "ee517911ffb8abb3f2932106d4a481dfa163c015e53a3aa9755332ad47ea02b2"
+        }
+      },
+      "dependency": null
+    },
+    {
+      "id": "influx",
+      "repository": "influxdata/influxdb-java",
+      "issue_number": 1019,
+      "source_path": "src/main/java/org/influxdb/dto/Point.java",
+      "scope": "upstream target class and its nested classes",
+      "revisions": {
+        "post": {
+          "commit": "455ee29387e20191ecc7bd51ef0b0d786527b527",
+          "source_url": "https://raw.githubusercontent.com/influxdata/influxdb-java/455ee29387e20191ecc7bd51ef0b0d786527b527/src/main/java/org/influxdb/dto/Point.java",
+          "source_sha256": "dc67800c32260ad6bf21088503c711153aab94d894cb1f22b7b5cf162630deac"
+        },
+        "pre": {
+          "commit": "5cb61c79f87fdc7af83999c97bea434ab0af33cc",
+          "source_url": "https://raw.githubusercontent.com/influxdata/influxdb-java/5cb61c79f87fdc7af83999c97bea434ab0af33cc/src/main/java/org/influxdb/dto/Point.java",
+          "source_sha256": "e7cc29c39926e85ef4a9656adb04dbf211c5c39d08b151d90f971892fd262ef6"
+        }
+      },
+      "dependency": {
+        "url": "https://repo.maven.apache.org/maven2/org/influxdb/influxdb-java/2.25/influxdb-java-2.25.jar",
+        "sha256": "0d57112df4c9882252bcf0f1f87fb1fe5e0ce39f2f455ae36933fbb3fb5f9bbb",
+        "bytes": 166627
+      }
+    }
+  ]
+}

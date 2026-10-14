@@ -1,0 +1,80 @@
+[
+  {
+    "tool": "SpotBugs",
+    "configuration": "4.9.8",
+    "rule_count_as_recorded": 504,
+    "O1": "none",
+    "O2": "none",
+    "O3": "none",
+    "O4": "none",
+    "scope": "dedicated checks identified in the pinned inventory, not an exhaustive capability claim",
+    "verification_status": "Inventory counts denote available definitions, not the number successfully enabled; runtime configuration and coverage limits accompany the protocol snapshot",
+    "source": "1001-Systematical/RULE-INVENTORY.md",
+    "source_record": "| SpotBugs 4.9.8 | 504 个 bug pattern | `SIC_THREADLOCAL_DEADLY_EMBRACE` | 外部类有静态 ThreadLocal 字段且内部类非静态时报告（类初始化死锁），不涉及值的生命周期 | 无 | 是（stock） | `baselines/inventory/spotbugs-4.9.8-patterns.txt`，grep `ThreadLocal`：1/504 |"
+  },
+  {
+    "tool": "PMD",
+    "configuration": "7.28.0",
+    "rule_count_as_recorded": 325,
+    "O1": "none",
+    "O2": "none",
+    "O3": "none",
+    "O4": "none",
+    "scope": "dedicated checks identified in the pinned inventory, not an exhaustive capability claim",
+    "verification_status": "Inventory counts denote available definitions, not the number successfully enabled; runtime configuration and coverage limits accompany the protocol snapshot",
+    "source": "1001-Systematical/RULE-INVENTORY.md",
+    "source_record": "| PMD 7.28.0 | 325 条 Java 规则 | 无 | — | 无 | 是（stock） | `baselines/inventory/pmd-7.28.0-java-rules.txt`，`mentions_threadlocal=True`：0/325 |"
+  },
+  {
+    "tool": "Infer",
+    "configuration": "1.3.0",
+    "rule_count_as_recorded": 160,
+    "O1": "none",
+    "O2": "none",
+    "O3": "none",
+    "O4": "none",
+    "scope": "dedicated checks identified in the pinned inventory, not an exhaustive capability claim",
+    "verification_status": "Inventory counts denote available definitions, not the number successfully enabled; runtime configuration and coverage limits accompany the protocol snapshot",
+    "source": "1001-Systematical/RULE-INVENTORY.md",
+    "source_record": "| Infer 1.3.0 | 160 种 issue type | 无 | — | 无 | 是（stock） | `baselines/inventory/infer-1.3.0-issue-types.txt`，grep：0/160 |"
+  },
+  {
+    "tool": "CodeQL",
+    "configuration": "2.27.1，`codeql/java-queries` 1.11.11，套件 `java-security-and-quality`",
+    "rule_count_as_recorded": 244,
+    "O1": "none",
+    "O2": "none",
+    "O3": "none",
+    "O4": "none",
+    "scope": "dedicated checks identified in the pinned inventory, not an exhaustive capability claim",
+    "verification_status": "Inventory counts denote available definitions, not the number successfully enabled; runtime configuration and coverage limits accompany the protocol snapshot",
+    "source": "1001-Systematical/RULE-INVENTORY.md",
+    "source_record": "| CodeQL 2.27.1，`codeql/java-queries` 1.11.11，套件 `java-security-and-quality` | 套件 244 条查询（查询包共 589 个 .ql） | 无生命周期查询；唯一提到 ThreadLocal 的查询是 `Security/CWE/CWE-367/TOCTOURace.ql`（把 ThreadLocal 当作竞态分析的一个来源） | — | 无 | 是（stock，E14 新增） | `codeql resolve queries …/java-security-and-quality.qls | wc -l`；`grep -rl ThreadLocal --include=*.ql` |"
+  },
+  {
+    "tool": "Error Prone",
+    "configuration": "2.50.0",
+    "rule_count_as_recorded": 495,
+    "O1": "none",
+    "O2": "none",
+    "O3": "none",
+    "O4": "proxy",
+    "scope": "dedicated checks identified in the pinned inventory, not an exhaustive capability claim",
+    "verification_status": "Inventory counts denote available definitions, not the number successfully enabled; runtime configuration and coverage limits accompany the protocol snapshot",
+    "source": "1001-Systematical/RULE-INVENTORY.md",
+    "source_record": "| Error Prone 2.50.0 | `bugpatterns` 包 495 个检查类 | `ThreadLocalUsage`（WARNING，默认开启）\"ThreadLocals should be stored in static fields\" | 只匹配**实例字段声明中直接写出的 `new ThreadLocal<T>()`**（含 ThreadLocal 子类的构造）；`ThreadLocal.withInitial(...)` 不匹配；T 为 String、Boolean、Long、Integer、Short、Character、Float、Double 或 `java.text.DateFormat` 子类时豁免；外围类带 `@Singleton` 或 Guice `Scope` 注解时豁免 | O4 | 是（stock，E14 新增） | 反编译 `ThreadLocalUsage.class`（见 EXPERIMENT-LOG E14）；文档 errorprone.info/bugpattern/ThreadLocalUsage |"
+  },
+  {
+    "tool": "Sonar",
+    "configuration": "Community Build 26.8.0.126808（sonar-java 8.37），默认质量配置 Sonar way",
+    "rule_count_as_recorded": 571,
+    "O1": "yes",
+    "O2": "none",
+    "O3": "none",
+    "O4": "none",
+    "scope": "dedicated checks identified in the pinned inventory, not an exhaustive capability claim",
+    "verification_status": "Inventory counts denote available definitions, not the number successfully enabled; runtime configuration and coverage limits accompany the protocol snapshot",
+    "source": "1001-Systematical/RULE-INVENTORY.md",
+    "source_record": "| SonarQube Community Build 26.8.0.126808（sonar-java 8.37），默认质量配置 Sonar way | Sonar way 激活 571 条 Java 规则（`api/qualityprofiles/search`，`activeRuleCount`）；S5164 在其中激活，类型 BUG、严重度 MAJOR | `java:S5164` \"ThreadLocal variables should be cleaned up\"（Bug） | 类级规则：对每个 `private` 且声明类型恰为 `java.lang.ThreadLocal` 的字段（静态或实例均可），若该字段在类内的所有使用中**没有任何一次 `remove()` 调用**则报告 \"Call remove() on <field>\"；另对 `set(null)` 报告 \"Use remove() instead of set(null)\"。类本身继承 ThreadLocal 或父类未知时跳过。不看调用是否在所有路径上执行，不跨类 | O1 | 是（stock，E14 新增，原生运行 SonarQube，不需要 Docker） | 源码 `java-checks/.../ThreadLocalCleanupCheck.java`（master，91 行）：`s.isPrivate() && s.type().is(THREAD_LOCAL)`、`usages().noneMatch(usageIsRemove)` |"
+  }
+]

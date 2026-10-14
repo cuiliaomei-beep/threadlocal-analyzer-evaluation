@@ -1,0 +1,3 @@
+# Frozen evidence is hashed byte for byte; disable automatic EOL conversion.
+* -text
+*.sh text eol=lf

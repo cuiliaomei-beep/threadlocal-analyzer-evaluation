@@ -1,0 +1,14 @@
+# Downloaded subjects and locally installed tools
+experiment/gt/jars/
+experiment/gt/sources/
+experiment/out/
+experiment/gt/precision/
+experiment/**/target/
+.tools/
+.venv/
+__pycache__/
+*.py[cod]
+*.part
+*.log
+.env
+results/reproduced/
