@@ -58,7 +58,7 @@ export TL_ERRORPRONE_JAR="$HOME/tools/errorprone/error_prone_core-2.50.0-with-de
 
 For Infer, either use that local installation alias or set `TL_INFER` to the actual extracted archive's `bin/infer`. Error Prone accepts `TL_ERRORPRONE_JAR`, or `TL_ERRORPRONE_CP_FILE` pointing to a file containing its complete processor classpath. The JAR with dependencies avoids assembling that file manually.
 
-`TL_JAVA` optionally overrides the Java executable. `TL_EVAL_ROOT` optionally changes the experiment directory; its value is the directory containing `gt/`, `baselines/`, and `tldoctor2/`, rather than the repository root. Leave it unset for this checkout. Windows drive paths are mapped into WSL; use a local drive checkout rather than a UNC network path.
+`TL_JAVA` optionally overrides the Java executable. `TL_EVAL_ROOT` optionally changes the experiment directory; its value is the directory containing `gt/`, `baselines/`, and `LifeTL/`, rather than the repository root. Leave it unset for this checkout. Windows drive paths are mapped into WSL; use a local drive checkout rather than a UNC network path.
 
 For a Windows Python controller, a PowerShell environment example is:
 
@@ -84,13 +84,13 @@ In the Linux/WSL shell, from the repository root:
 
 ```bash
 cd experiment
-mvn -f tldoctor2/pom.xml -DskipTests package
+mvn -f LifeTL/pom.xml -DskipTests package
 mvn -f baselines/spotbugs-tl/pom.xml -DskipTests package
 bash baselines/pmd-tl/build.sh
 cd ..
 ```
 
-The outputs are `experiment/tldoctor2/target/tldoctor2.jar`, `experiment/baselines/spotbugs-tl/target/spotbugs-threadlocal-plugin-1.0-SNAPSHOT.jar`, and `experiment/baselines/pmd-tl/target/pmd-threadlocal-rules-1.0-SNAPSHOT.jar`. Infer-TL uses the scripts under `experiment/baselines/infer-tl/`.
+The outputs are `experiment/LifeTL/target/LifeTL.jar`, `experiment/baselines/spotbugs-tl/target/spotbugs-threadlocal-plugin-1.0-SNAPSHOT.jar`, and `experiment/baselines/pmd-tl/target/pmd-threadlocal-rules-1.0-SNAPSHOT.jar`. Infer-TL uses the scripts under `experiment/baselines/infer-tl/`.
 
 LifeTL's Maven build pins [Soot 4.6.0](https://github.com/soot-oss/soot/releases/tag/4.6.0), [ASM 9.9.1](https://asm.ow2.io/versions.html), and [Gson 2.11.0](https://github.com/google/gson/releases/tag/gson-parent-2.11.0). Maven downloads these dependencies; the repository contains their configuration, not their binary distributions.
 

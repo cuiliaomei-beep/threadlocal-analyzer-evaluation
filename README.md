@@ -5,10 +5,10 @@ Reproduction materials for an empirical study of Java `ThreadLocal` lifecycle ob
 
 ## Start with the frozen results
 
-Clone the fixed artifact snapshot, then run these commands with Python 3.10 or newer. The checks require no analyzer installation and do not download subjects.
+Clone the current repository, then run these commands with Python 3.10 or newer. The checks require no analyzer installation and do not download subjects.
 
 ```bash
-git clone --branch artifact-2026-10-14 xxx.git
+git clone --branch main xxx.git
 cd threadlocal-analyzer-evaluation
 python scripts/verify_results.py
 python scripts/reproduce_reports.py --check
@@ -19,7 +19,7 @@ The first command checks file hashes and recomputes corpus counts, the 11 config
 
 The corpus contains 302 annotations, including 156 historical defects across 95 repositories. The prepared input inventory has 159 pre/post pairs and 264 distinct releases. Location and repair-response scoring uses 82 defects and 64 controls; the remaining 13 prepared records are retained for operational accounting. The six native suites, three reconstructed ThreadLocal adaptations, typestate-only configuration, and LifeTL are distinguished in the result files.
 
-Read [the measurement definitions](docs/methods.md) before interpreting a match or a warning disappearing after a repair. These are class co-location and warning-key measurements. The result columns do not represent manually adjudicated precision, recall, or F1.
+Follow [the reproduction commands and result checks](docs/reproduction.md) when interpreting a match or a warning disappearing after a repair. These are class co-location and warning-key measurements. The result columns do not represent manually adjudicated precision, recall, or F1.
 
 ## Reproduce an analysis
 
@@ -36,11 +36,11 @@ Fresh analyzer outputs go under `experiment/out/`. Native protocol reconstructio
 |---|---|
 | `experiment/gt/` | Annotations, frozen split, release pairing, source indexes, portable runners |
 | `experiment/baselines/` | SpotBugs-TL, PMD-TL, Infer-TL implementations and reconstruction provenance |
-| `experiment/tldoctor2/` | LifeTL source, framework model, and Maven build |
+| `experiment/LifeTL/` | LifeTL source, framework model, and Maven build |
 | `manifests/` | Subject URLs and hashes, frozen-file hashes, report scope, pinned case inputs |
 | `results/` | Configuration summaries, native protocols, selected diagnostics, ablations, report and case references |
 | `scripts/` | Verified subject fetching, offline recounts, native postprocessing, case reproduction |
-| `docs/` | Setup, commands, measurement definitions, and component provenance |
+| `docs/` | Setup, commands, and component provenance |
 
 ## Verification record
 

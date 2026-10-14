@@ -84,7 +84,7 @@ def main():
     parser.add_argument('--jobs',type=int,default=2,choices=[1,2,3])
     parser.add_argument('--timeout',type=int,default=180)
     parser.add_argument('--heap',default='3g')
-    parser.add_argument('--tool',type=Path,default=ROOT/'experiment/tldoctor2/target/tldoctor2.jar')
+    parser.add_argument('--tool',type=Path,default=ROOT/'experiment/LifeTL/target/LifeTL.jar')
     parser.add_argument('--list',action='store_true',help='Print pinned inputs without downloading or running tools.')
     parser.add_argument('--check-reference',action='store_true',help='Compare stable diagnostic identities with results/case_diagnostics.json.')
     args=parser.parse_args()
@@ -97,7 +97,7 @@ def main():
         print(json.dumps(cases,indent=2))
         return
     if not args.tool.is_file():
-        parser.error('Build experiment/tldoctor2 with Maven first')
+        parser.error('Build experiment/LifeTL with Maven first')
     output=ROOT/'experiment/out/case-audit'/datetime.now(timezone.utc).strftime('run-%Y%m%dT%H%M%S%fZ')
     output.mkdir(parents=True,exist_ok=False)
     dependencies={}

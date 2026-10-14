@@ -10,8 +10,8 @@ import java.nio.file.Paths;
 import java.util.*;
 
 /**
- * tldoctor2: ThreadLocal obligation checker (FSE-PLAN §3 v2).
- * usage: java -jar tldoctor2.jar --jar <file.jar> [--cp a.jar:b.jar] [--out report.json] [--model model.json]
+ * LifeTL: ThreadLocal obligation checker (FSE-PLAN §3 v2).
+ * usage: java -jar LifeTL.jar --jar <file.jar> [--cp a.jar:b.jar] [--out report.json] [--model model.json]
  *        [--disable name,name] [--set limit=value,limit=value] [--timeout seconds]
  */
 public final class Main {

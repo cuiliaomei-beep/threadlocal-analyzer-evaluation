@@ -1,5 +1,5 @@
 {
-  "_comment": "Framework model for tldoctor2 (FSE-PLAN §3.5). Every list is subject to the sensitivity analysis of RQ3.2. Only entries required by the design set are listed.",
+  "_comment": "Framework model for LifeTL (FSE-PLAN §3.5). Every list is subject to the sensitivity analysis of RQ3.2. Only entries required by the design set are listed.",
 
   "tlLikeClasses": [
     "java.lang.ThreadLocal", "java.lang.InheritableThreadLocal",

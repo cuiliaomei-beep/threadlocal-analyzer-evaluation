@@ -4,7 +4,7 @@ This repository combines the study's annotations, runners, reconstruction code, 
 
 ## Study baseline reconstructions
 
-The three documents under `experiment/TLDoctor/` are the source descriptions for the study's ThreadLocal adaptations. The copied [baseline provenance record](../experiment/baselines/PROVENANCE.md) details extraction steps and implementation choices.
+The study's ThreadLocal adaptations were reconstructed from the TLDoctor description documents listed below. Those documents are not included in this checkout. The copied [baseline provenance record](../experiment/baselines/PROVENANCE.md) details extraction steps and implementation choices. Maven builds the checked-in SpotBugs-TL sources directly; its historical Markdown extraction helper requires the original description document as an external input.
 
 | Component | Inherited material | Execution material added for the study |
 |---|---|---|
@@ -14,7 +14,7 @@ The three documents under `experiment/TLDoctor/` are the source descriptions for
 
 The adaptations should be identified as these study reconstructions. The provenance record explains interpretations such as static-field lifetime evidence, `ContextHolder` recognition, task-like boundaries, and Infer callee traversal depth. The PMD description names 7.0.0; this evaluation builds against the pinned 7.28.0 API. Infer is pinned to 1.3.0 because the description does not specify a release.
 
-LifeTL is built from `experiment/tldoctor2/`, including its framework model. Maven resolves its Soot, ASM, and Gson dependencies at the pinned versions. Their upstream distribution terms continue to apply to those dependencies.
+LifeTL is built from `experiment/LifeTL/`, including its framework model. Maven resolves its Soot, ASM, and Gson dependencies at the pinned versions. Their upstream distribution terms continue to apply to those dependencies.
 
 ## External tools and subjects
 

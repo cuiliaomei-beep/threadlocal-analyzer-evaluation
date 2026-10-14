@@ -20,7 +20,7 @@ from _runtime import (EXPERIMENT_ROOT, ROOT as RUNTIME_ROOT, BASH_ROOT, bash_pat
                       shell_environment, bash_argv)
 
 ROOT = RUNTIME_ROOT
-ALL = ["tldoctor2", "typestate", "spotbugs-tl", "pmd-tl", "infer-tl", "spotbugs-restricted-cost", "pmd", "infer"]
+ALL = ["LifeTL", "typestate", "spotbugs-tl", "pmd-tl", "infer-tl", "spotbugs-restricted-cost", "pmd", "infer"]
 
 
 def load(rel):

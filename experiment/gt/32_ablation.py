@@ -1,4 +1,4 @@
-"""32_ablation.py -- component ablation and sensitivity analysis of tldoctor2 (RQ3).
+"""32_ablation.py -- component ablation and sensitivity analysis of LifeTL (RQ3).
 
   python gt/32_ablation.py run    --group ablation|sensitivity [--split heldout] [--jobs 4]
   python gt/32_ablation.py report [--split heldout]

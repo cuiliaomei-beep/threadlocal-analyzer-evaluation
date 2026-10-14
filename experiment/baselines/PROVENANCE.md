@@ -2,7 +2,7 @@
 
 Date: 2026-09-29. Decision of the team: PMD-TL and Infer-TL are implemented from their descriptions in the TLDoctor
 repository (`TLDoctor/PMD-TL.md`, `TLDoctor/Infer-TL.md`), because the repository does not contain runnable code for them.
-All three -TL baselines were built **after** the held-out run of tldoctor2 and **without looking at held-out results of
+All three -TL baselines were built **after** the held-out run of LifeTL and **without looking at held-out results of
 any tool while writing them**; the only project used for smoke tests was `mvel2-2.1.4.Final` and `netty-common-4.0.53.Final`
 (both held-out releases, used to check that the tools load and produce output, not to tune rules).
 

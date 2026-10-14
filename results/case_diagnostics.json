@@ -1,6 +1,6 @@
 {
   "schema": "threadlocal-case-diagnostics-1",
-  "tool_source": "experiment/tldoctor2",
+  "tool_source": "experiment/LifeTL",
   "records": [
     {
       "case": "influx",

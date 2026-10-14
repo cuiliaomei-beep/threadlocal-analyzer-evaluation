@@ -3,13 +3,13 @@ TIME on an otherwise idle machine. This historical protocol includes the restric
 SpotBugs UnreadFields configuration; it is not a cost rerun of the full stock
 configuration in 42_spotbugs_full.py. Measurements use /usr/bin/time -v (gt/measure.sh).
 
-  python gt/29_measure.py run --split heldout [--tools tldoctor2,typestate,spotbugs,...] [--force]
+  python gt/29_measure.py run --split heldout [--tools LifeTL,typestate,spotbugs,...] [--force]
   python gt/29_measure.py report --split heldout          -> COST-REPORT.md, out/measure/measure_<split>.csv
 
 Recorded per (tool, release): wall-clock, user and system CPU seconds, the maximum resident set size of the largest
 process (exact) and the largest summed RSS of the tool's process tree (sampled every 0.5 s).
 What is measured is the analysis command itself, with the same options as in the evaluation runs:
-  tldoctor2 / typestate : java -Xmx6g -jar tldoctor2.jar [--mode typestate] --jar X
+  LifeTL / typestate : java -Xmx6g -jar LifeTL.jar [--mode typestate] --jar X
   spotbugs / spotbugs-tl: java -Xmx4g -jar spotbugs.jar -effort:max -low [-pluginList ...] -visitors <scored detectors> X
   pmd / pmd-tl          : pmd check -d <sources> -R <rules> --aux-classpath X -t 1
   infer                 : infer capture -- javac ... ; infer analyze -j 1   (two phases, reported separately and summed)
@@ -17,7 +17,7 @@ What is measured is the analysis command itself, with the same options as in the
                           the pruning of non-compiling files are preparation and are not part of the measurement
   infer-tl              : the two post-processing scripts; its historical total is Infer capture + postprocessing, excluding the Infer analysis phase
 All tools are restricted to one analysis thread where they offer the option (PMD -t 1, Infer -j 1) so that wall-clock
-times are comparable; tldoctor2 and SpotBugs are single-threaded analyses on a JVM with default GC threads.
+times are comparable; LifeTL and SpotBugs are single-threaded analyses on a JVM with default GC threads.
 
 File system. Inputs (jars, sources, file lists) and all tool outputs are staged on the Linux ext4 file system (~/tlbench),
 not on the Windows drive: a first attempt with everything on the 9p-mounted Windows drive made PMD's XML renderer ten
@@ -46,7 +46,7 @@ PMD_RULES = ",".join(f"category/java/{c}.xml" for c in
                      ["bestpractices", "codestyle", "design", "documentation", "errorprone", "multithreading", "performance", "security"])
 SBTL = ("-pluginList baselines/spotbugs-tl/target/spotbugs-threadlocal-plugin-1.0-SNAPSHOT.jar -visitors TL_SCO_MissingRemoveDetector,"
         "TL_CLP_StaticThreadLocalDetector,TL_CPM_UnbalancedContextDetector,TL_HVR_HeavyValueRetentionDetector")
-ALL = ["tldoctor2", "typestate", "spotbugs-tl", "pmd-tl", "spotbugs-restricted-cost", "pmd", "infer", "infer-tl"]
+ALL = ["LifeTL", "typestate", "spotbugs-tl", "pmd-tl", "spotbugs-restricted-cost", "pmd", "infer", "infer-tl"]
 
 
 def releases(split):
@@ -68,8 +68,8 @@ def commands(tool, r):
     """list of (phase, command) or None when the tool cannot run on this release"""
     k, jar, src = r["key"], r["jar"], r["src"]
     o = f"out/measure/{tool}/{k}"
-    if tool == "tldoctor2": return [("analysis", f"{JAVA} -Xmx6g -jar tldoctor2/target/tldoctor2.jar --jar gt/{jar} --out {o}.json")]
-    if tool == "typestate": return [("analysis", f"{JAVA} -Xmx6g -jar tldoctor2/target/tldoctor2.jar --mode typestate --jar gt/{jar} --out {o}.json")]
+    if tool == "LifeTL": return [("analysis", f"{JAVA} -Xmx6g -jar LifeTL/target/LifeTL.jar --jar gt/{jar} --out {o}.json")]
+    if tool == "typestate": return [("analysis", f"{JAVA} -Xmx6g -jar LifeTL/target/LifeTL.jar --mode typestate --jar gt/{jar} --out {o}.json")]
     if tool == "spotbugs-restricted-cost": return [("analysis", f"{JAVA} -Xmx4g -jar {SB} -textui -effort:max -low -visitors UnreadFields -xml:withMessages -output {o}.xml gt/{jar}")]
     if tool == "spotbugs-tl": return [("analysis", f"{JAVA} -Xmx4g -jar {SB} -textui -effort:max -low {SBTL} -xml:withMessages -output {o}.xml gt/{jar}")]
     if tool == "pmd": return [("analysis", f"{PMD} check -d {src} -R {PMD_RULES} -f xml -r {o}.xml --no-cache --no-progress --no-fail-on-violation --no-fail-on-error -t 1 --aux-classpath gt/{jar}")]
@@ -93,7 +93,7 @@ def commands(tool, r):
 
 def stage(rel):
     """copy everything the measured commands read to the Linux file system, keeping project-relative paths"""
-    paths = ["tldoctor2/target/tldoctor2.jar", "baselines/spotbugs-tl/target/spotbugs-threadlocal-plugin-1.0-SNAPSHOT.jar",
+    paths = ["LifeTL/target/LifeTL.jar", "baselines/spotbugs-tl/target/spotbugs-threadlocal-plugin-1.0-SNAPSHOT.jar",
              "baselines/pmd-tl/target/pmd-threadlocal-rules-1.0-SNAPSHOT.jar", "baselines/infer-tl/collect_threadlocal_facts.py",
              "baselines/infer-tl/infer_tl_postprocess.py", "gt/measure.sh"]
     for r in rel:

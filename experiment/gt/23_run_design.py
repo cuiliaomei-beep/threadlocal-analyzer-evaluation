@@ -1,4 +1,4 @@
-"""Step 23: run tldoctor2 on the pre/post jars of a split and evaluate against the fix-anchored oracle.
+"""Step 23: run LifeTL on the pre/post jars of a split and evaluate against the fix-anchored oracle.
 
   python gt/23_run_design.py run  --split design [--jobs 4] [--xmx 6g] [--force] [--ids H0059,...] [--tag v1]
   python gt/23_run_design.py eval --split design [--tag v1]
@@ -25,7 +25,7 @@ from _runtime import (EXPERIMENT_ROOT, ROOT as RUNTIME_ROOT, BASH_ROOT, bash_pat
 HERE = os.path.join(RUNTIME_ROOT, "gt"); ROOT = RUNTIME_ROOT
 WSL_ROOT = BASH_ROOT
 JAVA = java_command()
-JAR = "tldoctor2/target/tldoctor2.jar"
+JAR = "LifeTL/target/LifeTL.jar"
 
 
 def load_rows(split):
@@ -212,7 +212,7 @@ def cmd_eval(a):
     # summary
     gt = [r for r in res if r["gt"]]; ctrl = [r for r in res if not r["gt"] and r["misuse"].startswith("no-") and r["id"] not in inv]
     ok = [r for r in gt if r["pre_status"] == "OK"]
-    md = [f"# tldoctor2 on {a.split} set — tag {a.tag} ({time.strftime('%Y-%m-%d %H:%M')})", "",
+    md = [f"# LifeTL on {a.split} set — tag {a.tag} ({time.strftime('%Y-%m-%d %H:%M')})", "",
           f"GT rows with VALID pair: {len(gt)}; pre analysed OK: {len(ok)}; status counts: {dict(Counter(r['pre_status'] for r in gt))}",
           f"controls with VALID pair: {len(ctrl)}; pre OK: {sum(1 for r in ctrl if r['pre_status']=='OK')}", "",
           "## GT detection (fix-anchored: a REPORT warning on a FixSite class)", "",
